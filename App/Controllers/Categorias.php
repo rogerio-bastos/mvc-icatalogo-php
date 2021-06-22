@@ -20,8 +20,7 @@ class Categorias extends Controller
         $this->view("categorias/create");
     }
 
-    public function store()
-    {
+    public function store(){
 
         //validar os campos (pegar a função de validação já criada no outro projeto)
         $erros = $this->validaCampos();
@@ -63,9 +62,20 @@ class Categorias extends Controller
             header("location: /categorias");
         }
     }
-
+    //fazer a atualização da categoria
     public function update($id){
-        //fazer a atualização da categoria
+        //validando os campos
+        $erros = $this->validaCampos();
+
+        if (count($erros) > 0) {
+            $_SESSION["erros"] = $erros;
+
+            header("location: /categorias/edit/" . $id);
+
+            exit();
+        }
+
+        //criando o model para atualização
         $categoriaModel = $this->model("Categoria");
 
         $categoriaModel->id = $id;
