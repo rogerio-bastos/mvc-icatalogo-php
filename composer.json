@@ -1,0 +1,10 @@
+{
+    "name": "rogerio/icatalogo-mvc",
+    "description": "Projeto Icatalogo utilizando POO e MVC",
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "App\\" : "App/"
+        }
+    }
+}
